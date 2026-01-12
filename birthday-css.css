@@ -88,3 +88,35 @@ button:hover {
   input { font-size: 0.9rem; }
   .message { font-size: 1rem; }
 }
+
+/* 1. The Container: Make sure your video and message are inside the same div */
+.parent-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+/* 2. The Video: Make it responsive */
+#birthdayVideo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Ensures no weird stretching */
+}
+
+/* 3. The Message: Center it regardless of screen size */
+#birthdayMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* The secret to perfect centering */
+    
+    z-index: 10;
+    width: 80%; /* Keeps text from hitting the edges on mobile */
+    text-align: center;
+    pointer-events: none; /* Allows user to click "through" the text to pause video */
+    
+    /* Responsive font size */
+    font-size: clamp(1rem, 4vw, 3rem); 
+}
