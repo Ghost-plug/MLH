@@ -18,3 +18,24 @@ function checkName() {
 }
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Replace 'myVideoID' and 'myMessageID' with your actual IDs
+    const video = document.getElementById('birthdayVideo');
+    const message = document.getElementById('birthdayMessage');
+
+    if (video && message) {
+        // 1. Ensure video is muted (required for autoplay on mobile/Chrome)
+        video.muted = true;
+        video.playsInline = true; // Essential for full-screen prevention on iPhone
+
+        // 2. Play the video
+        video.play().catch(error => {
+            console.log("Autoplay blocked. It will play once the user clicks.");
+        });
+
+        // 3. Optional: Hide message when video ends
+        video.onended = function() {
+            message.style.display = 'none';
+        };
+    }
+});
